@@ -1,6 +1,8 @@
 # Predicting Duration of Power Outages in the US
 Part of Project 5 for DSC80 at UCSD
 
+The exploratory data analysis on this dataset can be found [here](https://ssidhu2.github.io/us-power-outages/)
+
 ## Framing the Problem
 
 This site contains an exploration of a linear regression prediction problem using major power outage data in the continental U.S. from January 2000 to July 2016. The data was aquired from 
@@ -45,4 +47,14 @@ To determine which hyperparameters performed the best, I used k-fold cross valid
 The RMSE of this final model on the training data was 87.43 and 72.94 on the test data. The lower RMSE on the test data again suggests good generalizability. Compared to the baseline model, the final model improved error by about 11 hours. I think this is a significant improvement. 
 
 ## Fairness Analysis
+
+I conducted a fairness analysis on this model, where the two groups are California and Other States. 
+
+<strong>Null hypothesis</strong>:  The model is fair. Its precision for California and other states are roughly the same, and any differences are due to random chance.
+
+<strong>Alternative hypothesis</strong>: The model is unfair. Its precision for other states is lower than its precision for California.
+
+Test statistic: the signed difference RMSE Other - RMSE California. A large test statistic means that the precision for other states is lower than for California. Significance level: 0.05.
+
+The resulting pvalue was 0.0, suggesting that I can reject the null hypothesis. 
 
